@@ -3,6 +3,7 @@ package api
 import (
 	_ "embed"
 	"io"
+	"log"
 	"net/http"
 	"os"
 	"time"
@@ -12,6 +13,7 @@ import (
 
 func Proxy(c *gin.Context) {
 	url := os.Getenv("OPENAI_URL") + c.Param("path")
+	log.Println("real path:", url)
 	// POST request with all data and headers
 	var req *http.Request
 	var err error
